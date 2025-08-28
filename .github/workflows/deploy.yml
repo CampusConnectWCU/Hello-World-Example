@@ -20,7 +20,7 @@ jobs:
     with:
       profile_name: "hello-world-cluster"
       experiment_name: ${{ github.event.inputs.experiment_name || 'hello-world-cluster-test' }}
-      node_count: ${{ github.event.inputs.node_count || 1 }}
+      node_count: ${{ github.event.inputs.node_count || '1' }}
       username: "ubuntu" 
     secrets:
       cloudlab_pem: ${{ secrets.CLOUDLAB_PEM }}
