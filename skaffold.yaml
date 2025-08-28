@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: hello-world-cluster
+build:
+  artifacts:
+    - image: hello-world-frontend
+      docker:
+        dockerfile: frontend/Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: hello-world
+        chartPath: helm
+        valuesFiles:
+          - helm/values.yaml
+        setValues:
+          image.repository: hello-world-frontend
+          image.tag: latest 
