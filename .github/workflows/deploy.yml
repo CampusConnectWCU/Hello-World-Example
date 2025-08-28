@@ -1,10 +1,6 @@
 name: Deploy to Cloudlab
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
     inputs:
       experiment_name:
@@ -27,7 +23,7 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Call Cloudlab CI/CD automation
-      uses: CampusConnectWCU/cloudlab-ci-cd@main
+      uses: CampusConnectWCU/cloudlab-workflow@main
       with:
         cloudlab_pem: ${{ secrets.CLOUDLAB_PEM }}
         profile_name: "hello-world-cluster"
