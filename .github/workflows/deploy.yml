@@ -16,23 +16,10 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout cluster code
-      uses: actions/checkout@v4
-      
-    - name: Call Cloudlab CI/CD automation
-      uses: CampusConnectWCU/cloudlab-workflow@main
-      with:
-        cloudlab_pem: ${{ secrets.CLOUDLAB_PEM }}
-        profile_name: "hello-world-cluster"
-        experiment_name: ${{ github.event.inputs.experiment_name || 'hello-world-cluster-test' }}
-        node_count: ${{ github.event.inputs.node_count || 1 }}
-        username: "ubuntu"
-        
-    - name: Deployment complete
-      run: |
-        echo "Hello World cluster deployment initiated!"
-        echo "Check Cloudlab experiment status for details."
-        echo "Application should be accessible once deployment completes." 
+    uses: CampusConnectWCU/Cloudlab-Workflow/.github/workflows/cloudlab-automation.yml@main
+    with:
+      cloudlab_pem: ${{ secrets.CLOUDLAB_PEM }}
+      profile_name: "hello-world-cluster"
+      experiment_name: ${{ github.event.inputs.experiment_name || 'hello-world-cluster-test' }}
+      node_count: ${{ github.event.inputs.node_count || 1 }}
+      username: "ubuntu" 
