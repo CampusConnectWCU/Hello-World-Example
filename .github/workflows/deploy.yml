@@ -24,4 +24,3 @@ jobs:
       username: "ubuntu" 
     secrets:
       cloudlab_pem: ${{ secrets.CLOUDLAB_PEM }}
-      inherit: true 
